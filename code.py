@@ -41,7 +41,6 @@ async def blink(led):
 
 
 async def main():
-    """Print a message when pin goes low and when it goes high."""
     with keypad.Keys(
         pins, value_when_pressed=config.value_when_pressed, pull=pull, interval=interval
     ) as keys:
