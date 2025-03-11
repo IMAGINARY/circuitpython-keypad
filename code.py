@@ -20,6 +20,11 @@ except ImportError:
     print("No config.py found, using default_config.py")
     config = default_config
 
+# For pins that only have a single keycode assigned (not a list of keycodes),
+# wrap the keycode value into a list to unify the configuration.
+config.keys = [
+    (key[0], [key[1]]) if not isinstance(key[1], list) else key for key in config.keys
+]
 
 help()
 print('board "{}": {}'.format(board.board_id, dir(board)))
@@ -60,17 +65,17 @@ async def main():
         while True:
             event = keys.events.get()
             if event:
-                keycode = config.keys[event.key_number][1]
+                keycodes = config.keys[event.key_number][1]
                 if event.pressed:
                     if led is not None:
                         await blink(led)
-                    print("key {} pressed".format(keycode))
-                    keyboard.press(keycode)
+                    print("key(s) {} pressed".format(keycodes))
+                    keyboard.press(*keycodes)
                 elif event.released:
                     if led is not None:
                         await blink(led)
-                    print("key {} released".format(keycode))
-                    keyboard.release(keycode)
+                    print("key(s) {} released".format(keycodes))
+                    keyboard.release(*keycodes)
             await asyncio.sleep(0)
 
 

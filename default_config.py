@@ -1,11 +1,12 @@
 import board
 from adafruit_hid.keycode import Keycode
 
-# List of (pin, keycode) pairs that define the mapping between pins on the board
-# and the keycodes that are sent through USB
+# List of (pin, keycode) or (pin, [keycode1, keycode2, ...]) pairs that define
+# the mapping between pins on the board and the keycodes that are sent through USB
 keys = [
     (board.GP0, Keycode.LEFT_ARROW),
     (board.GP1, Keycode.RIGHT_ARROW),
+    (board.GP2, [Keycode.SHIFT, Keycode.R]),
 ]
 
 # True if the pin reads high when the key is pressed.
