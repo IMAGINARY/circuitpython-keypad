@@ -19,12 +19,12 @@ value_when_pressed = False
 # However, enabling an internal pull when an external one is already present is not a problem;
 # it simply uses slightly more current.
 # Optional (default: true);
-# pull = True
+pull = True
 
 # Scan keys no more often than interval to allow for debouncing. interval is in float seconds.
 # Optional (default: 0.02)
-# interval = 0.02
+interval = 0.02
 
 # Digital pin to be used as output to signal that a key event has been sent.
-# Leave undefined to disable.
+# Set to None to disable.
 led_pin = board.LED
