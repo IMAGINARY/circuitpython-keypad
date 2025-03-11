@@ -1,6 +1,6 @@
 [project]
 name = "circuitpython-keypad"
-version = "1.0.0"
+version = "1.1.0"
 description = "Build custom USB HID keypads using microcontroller boards compatible with CircuitPython"
 readme = "README.md"
 requires-python = ">=3.13"
